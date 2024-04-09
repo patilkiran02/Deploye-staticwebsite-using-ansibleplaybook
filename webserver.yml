@@ -1,0 +1,22 @@
+
+-
+  name: configure nginx server
+  hosts: all
+  become: yes
+  tasks:
+    - name: install nginx package
+      apt:
+        name: nginx
+        state: latest
+    - name: start the nginx service
+      service:
+            name: nginx
+            state: started
+            enabled: yes
+    - name: deploye static website
+      copy:
+        src: index.html
+        dest: /var/www/html  
+
+          
+   
